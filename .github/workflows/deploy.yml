@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         id: install
         run: |
-          bun i
+          npm install -g bun && bun i
       - name: Build & deploy
         id: deploy
         run: |
