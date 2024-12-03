@@ -17,13 +17,18 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Install dependencies
-        id: install
         run: |
           npm install -g bun && bun i
+      - name: Config git
+        run: |
+          git config --global user.email "minh.luu@pionero.io"
+          git config --global user.name "Minh Luu"
+          git remote set-url origin git@github.com:minhluu-pionero/admin-ec-app-vue3.git
       - name: Build & deploy
-        id: deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         run: |
           bun run deploy
