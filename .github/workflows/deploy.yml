@@ -23,5 +23,7 @@ jobs:
           npm install -g bun && bun i
       - name: Build & deploy
         id: deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           bun run deploy
