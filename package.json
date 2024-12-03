@@ -1,4 +1,5 @@
 {
+  "homepage": "https://minhluu-pionero.github.io/admin-ec-app-vue3/",
   "name": "-",
   "version": "0.0.0",
   "private": true,
@@ -6,6 +7,8 @@
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
+    "predeploy": "bun run build && echo > build/.nojekyll",
+    "deploy": "gh-pages -d build",
     "preview": "vite preview",
     "test:unit": "vitest",
     "test:e2e": "start-server-and-test preview http://localhost:4173 'cypress run --e2e'",
@@ -35,6 +38,7 @@
     "eslint": "^9.14.0",
     "eslint-plugin-cypress": "^4.1.0",
     "eslint-plugin-vue": "^9.30.0",
+    "gh-pages": "^6.2.0",
     "jsdom": "^25.0.1",
     "npm-run-all2": "^7.0.1",
     "prettier": "^3.3.3",
