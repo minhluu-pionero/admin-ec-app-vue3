@@ -3,8 +3,8 @@ import './assets/tailwind.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import vuetify from './plugins/vuetify'
-import { queryClient } from './plugins/vue-query'
+import vuetify from './plugins/vuetify';
+import { queryClient } from './plugins/vue-query';
 import { VueQueryPlugin } from '@tanstack/vue-query'
 
 import App from './App.vue'
