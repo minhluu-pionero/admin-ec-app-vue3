@@ -1,6 +1,6 @@
 import './assets/main.css'
 import './assets/styles/tailwind.css';
-import vuetify from '@vuetify'
+import vuetify from '@/plugins/vuetify'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { VueQueryPlugin } from '@tanstack/vue-query'
