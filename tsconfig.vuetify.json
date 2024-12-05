@@ -1,0 +1,17 @@
+{
+  "extends": "./node_modules/@vue/tsconfig/tsconfig.dom.json",
+  "exclude": ["src/**/__tests__/*"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@vuetify": ["src/plugins/vuetify.ts"],
+      "@/*": ["src/*"] 
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "node_modules/vuetify/types/*"
+  ]
+}
