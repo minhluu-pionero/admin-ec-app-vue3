@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Login from '@/views/Login_page.vue'
+import Login_page from '@/views/Login_page.vue'
 import Forgot_password from '@/views/Forgotpassword_page.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,7 +8,7 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: Login,
+      component: Login_page,
     },
     {
       path: '/forgot_password',

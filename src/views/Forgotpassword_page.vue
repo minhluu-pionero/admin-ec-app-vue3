@@ -29,7 +29,7 @@
 
 
   
-  <script lang="ts">
+  <script lang="ts" setup>
   import { ref } from 'vue'
   
   const email = ref('')

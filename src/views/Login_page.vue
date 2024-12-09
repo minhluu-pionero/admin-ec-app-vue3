@@ -42,7 +42,7 @@
 
 
   
-<script lang="ts">
+<script lang="ts" setup>
   import { ref } from 'vue'
   const email = ref('')
   const password = ref('')
@@ -64,14 +64,14 @@
       passwordError.value = 'Password is required'
       valid = false
     }
-
+    console.log('Form valid:', valid)
    
     if (valid) {
       console.log('Form Submitted:', { email: email.value, password: password.value })
     }
   }
 </script>
-  
+
 <style scoped>
   .custom-link:hover {
     background-color: transparent !important;
