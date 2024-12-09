@@ -12,7 +12,7 @@ export default [
 
   {
     name: 'app/files-to-ignore',
-    ignores: ['**/dist/**', '**/dist-ssr/**', '**/coverage/**','**/build/**'],
+    ignores: ['**/dist/**', '**/dist-ssr/**', '**/coverage/**', '**/build/**'],
   },
 
   ...pluginVue.configs['flat/essential'],
@@ -25,10 +25,13 @@ export default [
 
   {
     ...pluginCypress.configs.recommended,
-    files: [
-      'cypress/e2e/**/*.{cy,spec}.{js,ts,jsx,tsx}',
-      'cypress/support/**/*.{js,ts,jsx,tsx}'
-    ],
+    files: ['cypress/e2e/**/*.{cy,spec}.{js,ts,jsx,tsx}', 'cypress/support/**/*.{js,ts,jsx,tsx}'],
+  },
+  {
+    // files: ['src/views/**/*.vue','src/components/**/*.vue'],
+    rules: {
+      'vue/multi-word-component-names': 0,
+    },
   },
   skipFormatting,
 ]
