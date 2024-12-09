@@ -1,71 +1,70 @@
 <template>
-  <div class="login-container flex items-center justify-center min-h-screen bg-gray-200 w-full">
-    <div class="login-page p-8 bg-white shadow-md rounded-lg w-full max-w-xl">
+  <v-container class="d-flex justify-center items-center min-h-screen bg-gray-200">
+    <v-card class="pa-8 bg-white shadow-md rounded-lg max-w-xl w-full">
       <h2 class="text-center text-2xl font-semibold mb-6">Login</h2>
-      <form @submit.prevent="handleSubmit" class="w-full">
-        <div class="mb-4">
-          <label for="email" class="block text-gray-700 mb-2">Email:</label>
-          <input
-            type="email"
-            v-model="email"
-            id="email"
-            placeholder="Enter your email"
-            class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <span v-if="emailError" class="text-red-500 text-sm">{{ emailError }}</span>
-        </div>
+      
+      <v-form @submit.prevent="handleSubmit" class="w-full">
+        <v-text-field
+          v-model="email"
+          label="Email"
+          type="email"
+          outlined
+          dense
+          :error-messages="emailError ? [emailError] : []"
+          placeholder="Enter your email"
+        />
 
-        <div class="mb-6">
-          <label for="password" class="block text-gray-700 mb-2">Password:</label>
-          <input
-            type="password"
-            v-model="password"
-            id="password"
-            placeholder="Enter your password"
-            class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <span v-if="passwordError" class="text-red-500 text-sm">{{ passwordError }}</span>
-        </div>
+        <v-text-field
+          v-model="password"
+          label="Password"
+          type="password"
+          outlined
+          dense
+          :error-messages="passwordError ? [passwordError] : []"
+          placeholder="Enter your password"
+        />
 
-        <button type="submit" class="w-full py-3 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500">
+        <v-btn
+          type="submit"
+          class="w-full rounded-md hover:bg-green-600 hover:text-white bg-blue-600"
+        >
           Login
-        </button>
+        </v-btn>
+
         <div class="text-center mt-4">
           <RouterLink to="/forgot_password" class="text-sm text-blue-500 hover:underline">
             Click here if you forgot your password!
           </RouterLink>
         </div>
-      </form>
-    </div>
-  </div>
+      </v-form>
+    </v-card>
+  </v-container>
 </template>
 
-
-  
 <script lang="ts" setup>
   import { ref } from 'vue'
+
   const email = ref('')
   const password = ref('')
   const emailError = ref('')
   const passwordError = ref('')
-  
+
   const handleSubmit = () => {
     emailError.value = ''
     passwordError.value = ''
-  
+
     let valid = true
-  
+
     if (!email.value) {
       emailError.value = 'Email is required'
       valid = false
     }
-    
+
     if (!password.value) {
       passwordError.value = 'Password is required'
       valid = false
     }
-    console.log('Form valid:', valid)
-   
+
     if (valid) {
       console.log('Form Submitted:', { email: email.value, password: password.value })
     }
@@ -76,6 +75,11 @@
   .custom-link:hover {
     background-color: transparent !important;
   }
+  .v-btn--variant-elevated, .v-btn--variant-flat {
+    background-color: #4CAF50;
+    color: white;
+  }
+  .v-container{
+    max-width: 100%
+  }
 </style>
-  
-  
