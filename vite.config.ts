@@ -7,7 +7,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/admin-ec-app-vue3/',
+  // base: '/admin-ec-app-vue3/',
   plugins: [
     vue(),
     vueJsx(),
