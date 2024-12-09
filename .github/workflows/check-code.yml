@@ -21,3 +21,6 @@ jobs:
       - name: Check eslint
         run: |
           bun run lint
+      - name: Check build
+        run: |
+          bun run build
