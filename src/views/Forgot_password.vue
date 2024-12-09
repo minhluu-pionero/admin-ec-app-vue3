@@ -15,7 +15,7 @@
           <span v-if="emailError" class="text-red-500 text-sm">{{ emailError }}</span>
         </div>
         <button type="submit" class="w-full py-3 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500">
-          Login
+          Send password
         </button>
         <div class="text-center mt-4">
           <RouterLink to="/login" class="text-sm text-blue-500 hover:underline">
