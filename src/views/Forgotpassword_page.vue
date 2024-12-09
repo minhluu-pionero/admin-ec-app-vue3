@@ -29,11 +29,10 @@
 
 
   
-  <script setup>
+  <script lang="ts">
   import { ref } from 'vue'
   
   const email = ref('')
-  const password = ref('')
   const emailError = ref('')
   const passwordError = ref('')
   
