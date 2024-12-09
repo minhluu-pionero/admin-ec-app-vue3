@@ -1,21 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
-import LoginPage from '@/views/login-page/index.vue'
-import ForgotPasswordPage from '@/views/forgotpassword-page/index.vue'
+import { ROUTES} from '@/utils/constants'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     
     {
-      path: '/login',
-      name: 'login',
-      component: LoginPage,
+      path: ROUTES.login.path,
+      name: ROUTES.login.name,
+      component: ()=> import('@/views/login-page/index.vue'),
     },
     {
-      path: '/forgot_password',
-      name: 'forgot_password',
-      component: ForgotPasswordPage,
+      path: ROUTES.forgot_password.path,
+      name: ROUTES.forgot_password.name,
+      component: () => import('@/views/forgot-password-page/index.vue'),
     },
   ],
 })
