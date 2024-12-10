@@ -4,6 +4,6 @@
 </template>
 
 <script lang="ts" setup>
-import LoginForm from './components/login-form/LoginForm.vue'
+import LoginForm from './components/login-form/index.vue'
 </script>
   

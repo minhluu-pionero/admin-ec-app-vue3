@@ -4,5 +4,5 @@
 </template>
 
 <script lang="ts" setup>
-import ForgetPasswordForm from './components/forget-password-form/ForgetPasswordForm.vue';
+import ForgetPasswordForm from './components/forget-password-form/index.vue';
 </script>

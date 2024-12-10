@@ -8,22 +8,33 @@
         placeholder="Enter your email"
       />
 
+      <v-text-field
+        label="Password"
+        type="password"
+        outlined
+        dense
+        placeholder="Enter your password"
+      />
+
       <v-btn
         type="submit"
         class="w-full rounded-md hover:opacity-80 text-white custom-btn"
       >
-        Send Password
+        Login
       </v-btn>
 
       <div class="text-center mt-4">
-        <RouterLink to="/login" class="text-sm text-blue-500 hover:underline">
-          Click here if you remembered your account!
+        <RouterLink :to="ROUTES.forgotPassword.path" class="text-sm text-blue-500 hover:underline">
+          Click here if you forgot your password!
         </RouterLink>
       </div>
     </v-form>
 </template>
+
 <script lang="ts" setup>
+import { ROUTES } from '@/utils/constants';
 </script>
+
 <style scoped>
 .v-btn--variant-elevated, .v-btn--variant-flat {
     background-color: #4CAF50;

@@ -4,7 +4,7 @@ export const ROUTES = {
       path: '/login',
     },
     forgotPassword: {
-      name: 'forgot_password',
-      path: '/forgot_password',
+      name: 'forgot-password',
+      path: '/forgot-password',
     },
 }
