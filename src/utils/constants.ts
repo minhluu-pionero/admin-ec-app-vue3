@@ -7,4 +7,4 @@ export const ROUTES = {
     name: 'forgot-password',
     path: '/forgot-password',
   },
-}
+} as const
