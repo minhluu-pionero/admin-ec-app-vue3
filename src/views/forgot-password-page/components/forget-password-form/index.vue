@@ -7,7 +7,7 @@
     </v-btn>
 
     <div class="text-center mt-4">
-      <RouterLink :to="ROUTES.login.path" class="text-sm text-blue-500 hover:underline">
+      <RouterLink :to="{ name: ROUTES.login.name }" class="text-sm text-blue-500 hover:underline">
         Click here if you remembered your account!
       </RouterLink>
     </div>
