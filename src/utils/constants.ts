@@ -3,7 +3,7 @@ export const ROUTES = {
       name: 'login',
       path: '/login',
     },
-    forgot_password: {
+    forgotPassword: {
       name: 'forgot_password',
       path: '/forgot_password',
     },

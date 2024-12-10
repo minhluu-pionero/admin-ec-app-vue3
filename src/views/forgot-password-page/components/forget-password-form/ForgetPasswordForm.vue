@@ -1,12 +1,10 @@
 <template>
-    <v-form @submit.prevent="handleSubmit" class="w-full">
+    <v-form @submit.prevent="" class="w-full">
       <v-text-field
-        v-model="email"
         label="Email"
         type="email"
         outlined
         dense
-        :error-messages="emailError ? [emailError] : []"
         placeholder="Enter your email"
       />
 
@@ -25,9 +23,6 @@
     </v-form>
 </template>
 <script lang="ts" setup>
-import { ForgotpasswordController } from './controller'; 
-
-const { email , emailError , handleSubmit} = ForgotpasswordController();
 </script>
 <style scoped>
 .v-btn--variant-elevated, .v-btn--variant-flat {

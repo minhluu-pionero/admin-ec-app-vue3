@@ -1,22 +1,18 @@
 <template>
-    <v-form @submit.prevent="handleSubmit" class="w-full">
+    <v-form @submit.prevent="" class="w-full">
       <v-text-field
-        v-model="email"
         label="Email"
         type="email"
         outlined
         dense
-        :error-messages="emailError ? [emailError] : []"
         placeholder="Enter your email"
       />
 
       <v-text-field
-        v-model="password"
         label="Password"
         type="password"
         outlined
         dense
-        :error-messages="passwordError ? [passwordError] : []"
         placeholder="Enter your password"
       />
 
@@ -36,9 +32,6 @@
 </template>
 
 <script lang="ts" setup>
-import { LoginController } from './controller';
-
-const { email, password, emailError, passwordError, handleSubmit } = LoginController();
 </script>
 
 <style scoped>
