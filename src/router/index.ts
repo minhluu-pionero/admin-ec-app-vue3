@@ -10,18 +10,18 @@ const router = createRouter({
       component: MainLayout,
       children: [
         {
-          path: ROUTES.mainHome.path,
-          name: ROUTES.mainHome.name,
+          path: ROUTES.home.path,
+          name: ROUTES.home.name,
           component: () => import('../views/HomeView.vue'),
         },
         {
-          path: ROUTES.mainAbouts.path,
-          name: ROUTES.mainAbouts.name,
+          path: ROUTES.abouts.path,
+          name: ROUTES.abouts.name,
           component: () => import('../views/AboutView.vue'),
         },
         {
-          path: ROUTES.mainSettings.path,
-          name: ROUTES.mainSettings.name,
+          path: ROUTES.settings.path,
+          name: ROUTES.settings.name,
           component: () => import('../views/SettingsView.vue'),
         },
       ],

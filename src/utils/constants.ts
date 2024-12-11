@@ -7,15 +7,15 @@ export const ROUTES = {
     name: 'forgot-password',
     path: 'forgot-password',
   },
-  mainHome: {
+  home: {
     name: 'home',
     path: '',
   },
-  mainSettings: {
+  settings: {
     name: 'settings',
     path: 'settings',
   },
-  mainAbouts: {
+  abouts: {
     name: 'abouts',
     path: 'abouts',
   },
