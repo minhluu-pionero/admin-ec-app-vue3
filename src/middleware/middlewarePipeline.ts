@@ -1,8 +1,18 @@
+interface Context {
+  to: any
+  from: any
+  next: (params?: any) => void
+}
+
+interface Params {
+  // Define properties of params if needed
+}
+
 export default async function middlewarePipeline(
-  context: any,
+  context: Context,
   middleware: string[],
   index: number,
-) {
+): Promise<any> {
   const nextMiddleware = middleware[index]
 
   if (!nextMiddleware) {
@@ -13,14 +23,14 @@ export default async function middlewarePipeline(
   const middlewareFunc = middlewareModule.default
 
   if (typeof middlewareFunc === 'function') {
-    return async (params: any) => {
+    return async (params: Params) => {
       if (params) {
         return context.next(params)
       }
 
       await middlewareFunc({
         ...context,
-        next: async (params: any) => {
+        next: async (params: Params) => {
           const result = await middlewarePipeline(context, middleware, index + 1)(params)
           return result
         },
