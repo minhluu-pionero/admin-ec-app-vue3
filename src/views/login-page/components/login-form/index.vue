@@ -35,9 +35,9 @@
 
 <script lang="ts" setup>
 import { ROUTES } from '@/utils/constants'
-import { LoginController } from './controller'
+import { useLoginController } from './controller'
 
-const { email, password, handleSubmit } = LoginController()
+const { email, password, handleSubmit } = useLoginController()
 </script>
 
 <style scoped>

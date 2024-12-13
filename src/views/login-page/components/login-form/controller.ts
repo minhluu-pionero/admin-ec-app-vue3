@@ -2,7 +2,7 @@ import { ref } from 'vue'
 
 import router from '@/router'
 
-export const LoginController = () => {
+export const useLoginController = () => {
   const email = ref('')
   const password = ref('')
   const error = ref('')

@@ -6,7 +6,9 @@ export const requireAuth = (
   next: NavigationGuardNext,
 ) => {
   const authToken = localStorage.getItem('auth-token')
-  if (to.meta.requiresAuth) {
+  const middleware = (to.meta as { middleware?: string }).middleware
+
+  if (middleware && middleware.includes('auth')) {
     if (!authToken) {
       next({ path: '/auth/login' })
     } else {
@@ -15,6 +17,4 @@ export const requireAuth = (
   } else {
     next()
   }
-  const title = typeof to.meta.title === 'string' ? to.meta.title : 'Vite App'
-  document.title = title
 }
