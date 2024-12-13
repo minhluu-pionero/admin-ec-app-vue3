@@ -1,4 +1,10 @@
-export const requireAuth = (to: any, from: any, next: any) => {
+import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
+
+export const requireAuth = (
+  to: RouteLocationNormalized,
+  from: RouteLocationNormalized,
+  next: NavigationGuardNext,
+) => {
   const authToken = localStorage.getItem('auth-token')
   if (to.meta.requiresAuth) {
     if (!authToken) {
@@ -9,6 +15,6 @@ export const requireAuth = (to: any, from: any, next: any) => {
   } else {
     next()
   }
-  const title = to.meta.title || 'Vite App'
+  const title = typeof to.meta.title === 'string' ? to.meta.title : 'Vite App'
   document.title = title
 }
