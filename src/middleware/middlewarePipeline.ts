@@ -1,12 +1,10 @@
 interface Context {
-  to: any
-  from: any
-  next: (params?: any) => void
+  to: unknown
+  from: unknown
+  next: <T>(params?: T) => void
 }
 
-interface Params {
-  // Define properties of params if needed
-}
+interface Params {}
 
 export default async function middlewarePipeline(
   context: Context,
