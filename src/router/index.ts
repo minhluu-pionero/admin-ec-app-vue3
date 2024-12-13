@@ -1,12 +1,37 @@
+import middlewarePipeline from '@/middleware/middlewarePipeline'
+import routes from '@/router/routes'
+import NProgress from 'nprogress'
+import { trackRouter } from 'vue-gtag-next'
 import { createRouter, createWebHistory } from 'vue-router'
 
-import { requireAuth } from '@/middleware/auth'
-import routes from './routes'
-
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes,
 })
-router.beforeEach(requireAuth)
+
+router.beforeEach((to, from, next) => {
+  if (to.name) {
+    NProgress.start()
+  }
+
+  const middleware = Array.isArray(to.meta.middleware) ? to.meta.middleware : []
+
+  if (middleware.length === 0) {
+    return next()
+  }
+
+  const context = { to, from, next }
+
+  return middleware[0]({
+    ...context,
+    next: middlewarePipeline(context, middleware, 1),
+  })
+})
+
+router.afterEach(() => {
+  NProgress.done()
+})
+
+trackRouter(router)
 
 export default router

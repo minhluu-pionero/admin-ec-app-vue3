@@ -6,15 +6,14 @@ export const requireAuth = (
   next: NavigationGuardNext,
 ) => {
   const authToken = localStorage.getItem('auth-token')
-  const middleware = (to.meta as { middleware?: string }).middleware
-
+  const middleware = to.meta.middleware as string[]
   if (middleware && middleware.includes('auth')) {
     if (!authToken) {
-      next({ path: '/auth/login' })
+      return next({ path: '/auth/login' })
     } else {
-      next()
+      return next()
     }
-  } else {
-    next()
   }
+
+  next()
 }
