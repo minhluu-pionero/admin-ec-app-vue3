@@ -6,7 +6,7 @@ interface Context {
   next: NavigationGuardNext
 }
 
-type Middleware = (context: Context & { next: (param?: RouteLocationNormalized | string) => void }) => Promise<void> | void
+type Middleware = (context: Context & { next: NavigationGuardNext }) => Promise<void> | void
 
 export default async function middlewarePipeline(
   context: Context,
@@ -23,7 +23,7 @@ export default async function middlewarePipeline(
     return middlewarePipeline(context, middleware, index + 1)
   }
 
-  const nextWrapper = (param?: RouteLocationNormalized | string) => {
+  const nextWrapper: NavigationGuardNext = (param?: string | RouteLocationNormalized) => {
     if (param) {
       return context.next(param)
     }
