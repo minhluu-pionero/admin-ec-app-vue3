@@ -1,7 +1,7 @@
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
 
 interface RouteMeta {
-  middleware?: Array<Function>
+  middleware?: Array<() => Promise<void> | void> 
 }
 
 export default async function auth({

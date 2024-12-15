@@ -1,14 +1,16 @@
-import type { NavigationGuardNext } from 'vue-router'
+import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
 
 interface Context {
-  to: unknown
-  from: unknown
+  to: RouteLocationNormalized
+  from: RouteLocationNormalized
   next: NavigationGuardNext
 }
 
+type Middleware = (context: Context & { next: (param?: any) => void }) => Promise<void> | void
+
 export default async function middlewarePipeline(
   context: Context,
-  middleware: Function[],
+  middleware: Middleware[],
   index: number
 ): Promise<void> {
   const nextMiddleware = middleware[index]
@@ -16,8 +18,6 @@ export default async function middlewarePipeline(
   if (!nextMiddleware) {
     return context.next()
   }
-
-  console.log(`Running middleware [${index + 1}/${middleware.length}]: ${nextMiddleware.name}`)
 
   const proceedNext = () => {
     return middlewarePipeline(context, middleware, index + 1)
