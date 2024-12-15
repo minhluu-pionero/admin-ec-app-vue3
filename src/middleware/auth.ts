@@ -1,16 +1,12 @@
-import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
+import type { NavigationGuardNext } from 'vue-router'
 
 interface RouteMeta {
-  middleware?: Array<() => Promise<void> | void> 
+  middleware?: Array<() => Promise<void> | void>
 }
 
 export default async function auth({
-  to,
-  from,
   next,
 }: {
-  to: RouteLocationNormalized & { meta: RouteMeta }
-  from: RouteLocationNormalized
   next: NavigationGuardNext
 }) {
   const authToken = localStorage.getItem('auth-token')
