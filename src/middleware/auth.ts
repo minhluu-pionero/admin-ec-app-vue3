@@ -1,9 +1,5 @@
 import type { NavigationGuardNext } from 'vue-router'
 
-interface RouteMeta {
-  middleware?: Array<() => Promise<void> | void>
-}
-
 export default async function auth({
   next,
 }: {
