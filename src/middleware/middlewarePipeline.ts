@@ -1,4 +1,4 @@
-import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
+import type { NavigationGuardNext, RouteLocationNormalized, RouteLocationRaw, NavigationGuardNextCallback } from 'vue-router';
 
 interface Context {
   to: RouteLocationNormalized;
@@ -23,14 +23,22 @@ export default async function middlewarePipeline(
     return middlewarePipeline(context, middleware, index + 1);
   };
 
-  type NextParam = string | RouteLocationNormalized | undefined;
+  type NextParam = RouteLocationRaw | boolean | undefined | NavigationGuardNextCallback;
 
   const nextWrapper: NavigationGuardNext = (param?: NextParam) => {
-    if (param) {
+    if (param instanceof Error) {
       return context.next(param);
     }
 
-    return proceedNext();
+    if (typeof param === 'boolean' || param === undefined) {
+      return context.next(param);
+    }
+
+    if (param) {
+      return context.next(param as RouteLocationRaw);
+    }
+
+    proceedNext();
   };
 
   return nextMiddleware({
