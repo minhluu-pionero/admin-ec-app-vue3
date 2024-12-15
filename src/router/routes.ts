@@ -1,11 +1,12 @@
 import { ROUTES } from '@/utils/constants'
+import auth from '@/middleware/auth'
 
 export default [
   {
     path: '/',
     component: () => import('@/layouts/main-layout/MainLayout.vue'),
     meta: {
-      middleware: ['auth'],
+      middleware: [auth],
     },
     children: [
       {

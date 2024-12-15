@@ -1,19 +1,29 @@
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
 
-export const requireAuth = (
-  to: RouteLocationNormalized,
-  from: RouteLocationNormalized,
-  next: NavigationGuardNext,
-) => {
+interface RouteMeta {
+  middleware?: Array<Function>
+}
+
+export default async function auth({
+  to,
+  from,
+  next,
+}: {
+  to: RouteLocationNormalized & { meta: RouteMeta }
+  from: RouteLocationNormalized
+  next: NavigationGuardNext
+}) {
   const authToken = localStorage.getItem('auth-token')
-  const middleware = to.meta.middleware as string[]
-  if (middleware && middleware.includes('auth')) {
-    if (!authToken) {
-      return next({ path: '/auth/login' })
-    } else {
-      return next()
-    }
+  console.log('Running middleware: auth')
+  console.log('authToken:', authToken)
+
+  if (authToken && authToken === 'this-is-token') {
+    console.log('Valid token found, proceeding to next route')
+    return next()
   }
 
-  next()
+  console.log('Redirecting to login page due to missing or invalid token')
+  return next({
+    path: '/auth/login',
+  })
 }
