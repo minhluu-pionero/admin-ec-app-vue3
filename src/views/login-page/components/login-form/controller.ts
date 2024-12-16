@@ -1,7 +1,9 @@
 import { ref } from 'vue'
 import router from '@/router'
+import { useAuthStore } from '@/stores/authStore'
 
 export const useLoginFormController = () => {
+  const authStore = useAuthStore()
   const email = ref('')
   const password = ref('')
   const error = ref('')
@@ -14,12 +16,10 @@ export const useLoginFormController = () => {
     if (!email.value) {
       emailError.value = 'Email is required'
       isValid = false
-    } 
-    else if (!/^\S+@\S+\.\S+$/.test(email.value)) {
+    } else if (!/^\S+@\S+\.\S+$/.test(email.value)) {
       emailError.value = 'Invalid email format'
       isValid = false
-    } 
-    else {
+    } else {
       emailError.value = ''
     }
 
@@ -36,15 +36,15 @@ export const useLoginFormController = () => {
   }
 
   const handleSubmit = async () => {
-    if (!validateInputs()) {
-      return
-    }
+    if (!validateInputs()) return
 
     const emailFake = 'long@gmail.com'
     const passwordFake = '123456'
+    const fakeToken = 'this-is-token'
+    const fakeUser = { email: emailFake, name: 'Long Tran' }
 
     if (email.value === emailFake && password.value === passwordFake) {
-      localStorage.setItem('auth-token', 'this-is-token')
+      authStore.login(fakeToken, fakeUser)
       router.push({ name: 'home' })
     } else {
       error.value = 'Invalid username or password'
