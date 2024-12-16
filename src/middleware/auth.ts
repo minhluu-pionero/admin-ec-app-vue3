@@ -13,14 +13,14 @@ export default async function auth({
 
   if (!authStore.isLoggedIn) {
     console.log('No valid token found, redirecting to login page')
-    return next({ path: '/auth/login' })
+    return next({ name: 'login' })
   }
 
   const isValid = await authStore.validateToken()
 
   if (!isValid) {
     console.log('Invalid or expired token, redirecting to login page')
-    return next({ path: '/auth/login' })
+    return next({ name: 'login' })
   }
 
   console.log('Valid token, proceeding to route')
