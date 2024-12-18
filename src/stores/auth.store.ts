@@ -4,8 +4,8 @@ import type { AuthStateType } from '@/types/auth.type'
 
 export const useAuthStore = defineStore('auth', {
   state: (): AuthStateType => ({
-    user: { email: 'user@example.com', name: 'Hardcoded User' },
-    // user: undefined,
+    //user: { email: 'user@example.com', name: 'Hardcoded User' },
+    user: undefined,
   }),
 
   getters: {
