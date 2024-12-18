@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia'
+
 import type { AuthState } from '@/types/auth.type'
+
 export const useAuthStore = defineStore('auth', {
   state: (): AuthState => ({
     token: 'hardcoded-token',
