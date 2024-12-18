@@ -4,16 +4,12 @@ import type { AuthStateType } from '@/types/auth.type'
 
 export const useAuthStore = defineStore('auth', {
   state: (): AuthStateType => ({
-    // token: 'hardcoded-token',
-    // user: { email: 'user@example.com', name: 'Hardcoded User' },
-    token: null,
-    user: undefined,
-    tokenExpiry: null,
-    isTokenExpired: false,
+    user: { email: 'user@example.com', name: 'Hardcoded User' },
+    // user: undefined,
   }),
 
   getters: {
-    isLoggedIn: (state) => !!state.token && !!state.user,
+    isLoggedIn: (state) => !!state.user,
   },
 
   actions: {

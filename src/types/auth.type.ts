@@ -8,8 +8,5 @@ export type UserType = {
 }
 
 export type AuthStateType = {
-  token: string | null
   user?: UserType
-  tokenExpiry: string | null
-  isTokenExpired: boolean
 }

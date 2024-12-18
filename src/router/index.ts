@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import routes from '@/router/routes'
 import middlewarePipeline from '@/middleware/middlewarePipeline'
-import { useAuthStore } from '@/stores/authStore'
+import { useAuthStore } from '@/stores/auth.store'
 
 const router = createRouter({
   history: createWebHistory('/admin-ec-app-vue3'),

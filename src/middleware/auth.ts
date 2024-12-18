@@ -1,6 +1,6 @@
 import type { NavigationGuardNext } from 'vue-router'
 
-import { useAuthStore } from '@/stores/authStore'
+import { useAuthStore } from '@/stores/auth.store'
 import { ROUTES } from '@/utils/constants'
 
 export default async function auth({ next }: { next: NavigationGuardNext }) {
