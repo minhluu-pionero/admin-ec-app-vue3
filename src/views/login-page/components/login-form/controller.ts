@@ -2,6 +2,7 @@ import { ref } from 'vue'
 
 import router from '@/router'
 import { useAuthStore } from '@/stores/authStore'
+import { ROUTES } from '@/utils/constants'
 
 export const useLoginFormController = () => {
   const authStore = useAuthStore()
@@ -17,7 +18,7 @@ export const useLoginFormController = () => {
 
     if (email.value === emailFake && password.value === passwordFake) {
       authStore.login()
-      router.push({ name: 'home' })
+      router.push({ name: ROUTES.home.name })
     } else {
       error.value = 'Invalid username or password'
     }
