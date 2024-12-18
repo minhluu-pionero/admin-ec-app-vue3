@@ -1,4 +1,5 @@
 import type { NavigationGuardNext } from 'vue-router'
+import { useAuthStore } from '@/stores/auth.store'
 import { ROUTES } from '@/utils/constants'
 
 export default async function auth({
@@ -6,7 +7,7 @@ export default async function auth({
   authStore,
 }: {
   next: NavigationGuardNext
-  authStore: any
+  authStore: ReturnType<typeof useAuthStore>
 }) {
   if (!authStore.isLoggedIn) {
     return next({ name: ROUTES.login.name })
