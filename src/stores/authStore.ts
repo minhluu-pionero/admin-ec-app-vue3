@@ -3,66 +3,29 @@ import router from '@/router'
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
-    token: localStorage.getItem('auth-token') || null,
-    user: null as object | null, 
-    tokenExpiry: localStorage.getItem('auth-token-expiry') || null,
+    token: 'hardcoded-token',
+    user: { email: 'user@example.com', name: 'Hardcoded User' },
+    // token: null,
+    // user: null,
+    tokenExpiry: null,
     isTokenExpired: false,
   }),
 
   getters: {
-    isLoggedIn: (state) => !!state.token && new Date().getTime() < Number(state.tokenExpiry),
+    isLoggedIn: (state) => !!state.token,
   },
 
   actions: {
-    login(token: string, user: object) {
-      const expiryTime = new Date().getTime() + 10 * 60 * 1000
-      this.token = token
-      this.user = user
-      this.tokenExpiry = expiryTime.toString() 
-      this.isTokenExpired = false
-
-      localStorage.setItem('auth-token', token)
-      localStorage.setItem('auth-token-expiry', this.tokenExpiry)
-
-      setTimeout(() => {
-        this.isTokenExpired = true
-      }, 10 * 60 * 1000) 
+    login() {
+      console.log('User  logged in with hardcoded values')
     },
 
-    logout() {
-      this.token = null
-      this.user = null
-      this.tokenExpiry = null
-      this.isTokenExpired = false
-      localStorage.removeItem('auth-token')
-      localStorage.removeItem('auth-token-expiry')
-      router.push({ name: 'login' }) 
+    validateToken() {
+      return true
     },
 
-    async validateToken() {
-      const currentTime = new Date().getTime()
-      if (this.token && this.tokenExpiry && currentTime < Number(this.tokenExpiry)) {
-        return true
-      } else {
-        this.isTokenExpired = true
-        return false
-      }
-    },
+    refreshToken() {},
 
-    refreshToken() {
-      const newExpiryTime = new Date().getTime() + 10 * 60 * 1000
-      this.tokenExpiry = newExpiryTime.toString() 
-      localStorage.setItem('auth-token-expiry', this.tokenExpiry)
-      this.isTokenExpired = false
-
-      console.log("Token has been refreshed!")
-    },
-
-    autoExtendToken() {
-      const currentTime = new Date().getTime()
-      if (this.token && this.tokenExpiry && currentTime + 60 * 1000 >= Number(this.tokenExpiry)) {
-        this.refreshToken()
-      }
-    },
+    autoExtendToken() {},
   },
 })
