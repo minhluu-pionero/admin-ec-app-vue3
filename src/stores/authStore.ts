@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import router from '@/router'
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
@@ -16,9 +15,7 @@ export const useAuthStore = defineStore('auth', {
   },
 
   actions: {
-    login() {
-      console.log('User  logged in with hardcoded values')
-    },
+    login() {},
 
     validateToken() {
       return true

@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
 import routes from '@/router/routes'
 import middlewarePipeline from '@/middleware/middlewarePipeline'
 import { useAuthStore } from '@/stores/authStore'
@@ -14,7 +15,7 @@ router.beforeEach((to, from, next) => {
   authStore.autoExtendToken()
 
   const middleware = Array.isArray(to.meta.middleware) ? to.meta.middleware : []
-  
+
   if (middleware.length === 0) {
     return next()
   }
