@@ -7,9 +7,9 @@ export type UserType = {
   name: string
 }
 
-export interface AuthState {
+export type AuthStateType = {
   token: string | null
-  user: UserType | null
+  user?: UserType
   tokenExpiry: string | null
   isTokenExpired: boolean
 }
