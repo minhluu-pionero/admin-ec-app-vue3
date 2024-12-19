@@ -31,13 +31,15 @@ export default async function middlewarePipeline(
   }
 
   const nextWrapper: NavigationGuardNext = (param?: NextParamType) => {
-    return param instanceof Error
-      ? context.next(param)
-      : typeof param === 'boolean' || param === undefined
-      ? context.next(param)
-      : param
-      ? context.next(param as RouteLocationRaw)
-      : proceedNext();
+    if (param instanceof Error || typeof param === 'boolean' || param === undefined) {
+      return context.next(param);
+    }
+  
+    if (param) {
+      return context.next(param as RouteLocationRaw);
+    }
+  
+    proceedNext();
   };
 
   return nextMiddleware({
