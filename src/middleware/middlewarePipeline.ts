@@ -5,7 +5,7 @@ import type {
   NavigationGuardNextCallback,
 } from 'vue-router'
 
-interface IContext {
+type IContext = {
   to: RouteLocationNormalized
   from: RouteLocationNormalized
   next: NavigationGuardNext

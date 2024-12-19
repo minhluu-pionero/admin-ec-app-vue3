@@ -6,11 +6,9 @@ export const useAuthStore = defineStore('auth', {
   state: (): AuthStateType => ({
     user: { email: 'user@example.com', name: 'Hardcoded User' },
   }),
-
   getters: {
     isLoggedIn: (state) => !!state?.user,
   },
-
   actions: {
     login() {},
     validateToken() {
