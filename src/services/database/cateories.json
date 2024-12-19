@@ -1,1 +1,82 @@
-
+[
+  {
+    "id": 1,
+    "name": "Electronics"
+  },
+  {
+    "id": 2,
+    "name": "Books"
+  },
+  {
+    "id": 3,
+    "name": "Clothing"
+  },
+  {
+    "id": 4,
+    "name": "Home & Kitchen"
+  },
+  {
+    "id": 5,
+    "name": "Beauty & Personal Care"
+  },
+  {
+    "id": 6,
+    "name": "Health & Household"
+  },
+  {
+    "id": 7,
+    "name": "Toys & Games"
+  },
+  {
+    "id": 8,
+    "name": "Sports & Outdoors"
+  },
+  {
+    "id": 9,
+    "name": "Automotive"
+  },
+  {
+    "id": 10,
+    "name": "Industrial & Scientific"
+  },
+  {
+    "id": 11,
+    "name": "Baby"
+  },
+  {
+    "id": 12,
+    "name": "Tools & Home Improvement"
+  },
+  {
+    "id": 13,
+    "name": "Pet Supplies"
+  },
+  {
+    "id": 14,
+    "name": "Office Products"
+  },
+  {
+    "id": 15,
+    "name": "Arts, Crafts & Sewing"
+  },
+  {
+    "id": 16,
+    "name": "Software"
+  },
+  {
+    "id": 17,
+    "name": "Grocery & Gourmet Food"
+  },
+  {
+    "id": 18,
+    "name": "Patio, Lawn & Garden"
+  },
+  {
+    "id": 19,
+    "name": "Video Games"
+  },
+  {
+    "id": 20,
+    "name": "Musical Instruments"
+  }
+]

@@ -1,8 +1,12 @@
 import Cookies from 'js-cookie'
 
+import categoryList from './database/cateories.json'
+
 export enum ApiPath {
   login = '/login',
   me = '/me',
+  categoryList = '/categories/list',
+  categoryForm = '/categories/form',
 }
 
 const client = (url: ApiPath) => {
@@ -31,6 +35,8 @@ const handleResponse = (url: ApiPath) => {
         email: 'test@example.com',
         name: 'Test User',
       }
+    case ApiPath.categoryList:
+      return categoryList
     default:
       return null
   }
