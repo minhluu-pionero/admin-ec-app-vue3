@@ -1,5 +1,6 @@
 import { ref } from 'vue'
 import router from '@/router'
+import { ROUTES } from '@/utils/constants'
 
 export const useLoginFormController = () => {
   const email = ref('')
@@ -43,7 +44,7 @@ export const useLoginFormController = () => {
 
     if (email.value === emailFake && password.value === passwordFake) {
       localStorage.setItem('auth-token', 'this-is-token')
-      router.push({ name: 'home' })
+      router.push({ name: ROUTES.home.name })
     } else {
       error.value = 'Invalid username or password'
     }

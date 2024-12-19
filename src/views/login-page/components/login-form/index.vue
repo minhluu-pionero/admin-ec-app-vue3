@@ -42,6 +42,7 @@
 <script lang="ts" setup>
 import { ROUTES } from '@/utils/constants'
 import { useLoginFormController } from './controller'
+
 const { email, password, handleSubmit, emailError, passwordError } = useLoginFormController()
 </script>
 
