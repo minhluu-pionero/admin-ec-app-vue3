@@ -9,8 +9,5 @@ export default async function auth({
   next: NavigationGuardNext
   authStore: ReturnType<typeof useAuthStore>
 }) {
-  if (!authStore.isLoggedIn) {
-    return next({ name: ROUTES.login.name })
-  }
-  return next()
+  return authStore.isLoggedIn ? next() : next({ name: ROUTES.login.name })
 }

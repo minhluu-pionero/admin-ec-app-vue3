@@ -5,18 +5,18 @@ import type {
   NavigationGuardNextCallback,
 } from 'vue-router'
 
-type IContext = {
+type ContextType = {
   to: RouteLocationNormalized
   from: RouteLocationNormalized
   next: NavigationGuardNext
 }
 
-type MiddlewareType = (context: IContext) => Promise<void> | void
+type MiddlewareType = (context: ContextType) => Promise<void> | void
 
 type NextParamType = RouteLocationRaw | boolean | undefined | NavigationGuardNextCallback
 
 export default async function middlewarePipeline(
-  context: IContext,
+  context: ContextType,
   middleware: MiddlewareType[],
   index: number,
 ): Promise<void> {
@@ -31,20 +31,13 @@ export default async function middlewarePipeline(
   }
 
   const nextWrapper: NavigationGuardNext = (param?: NextParamType) => {
-    if (param instanceof Error) {
-      return context.next(param)
-    }
-
-    if (typeof param === 'boolean' || param === undefined) {
-      return context.next(param)
-    }
-
-    if (param) {
-      return context.next(param as RouteLocationRaw)
-    }
-
-    proceedNext()
-  }
+    return param instanceof Error || typeof param === 'boolean' || param === undefined
+      ? context.next(param)
+      : param
+      ? context.next(param as RouteLocationRaw)
+      : proceedNext();
+  };
+  
 
   return nextMiddleware({
     ...context,
