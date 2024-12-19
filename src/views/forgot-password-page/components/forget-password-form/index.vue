@@ -5,7 +5,6 @@
     <v-btn type="submit" class="w-full rounded-md hover:opacity-80 text-white custom-btn">
       Send Password
     </v-btn>
-
     <div class="text-center mt-4">
       <RouterLink :to="{ name: ROUTES.login.name }" class="text-sm text-blue-500 hover:underline">
         Click here if you remembered your account!
