@@ -15,7 +15,10 @@
     </v-btn>
 
     <div class="text-center mt-4">
-      <RouterLink :to="{ name: ROUTES.forgotPassword.name }" class="text-sm text-blue-500 hover:underline">
+      <RouterLink
+        :to="{ name: ROUTES.forgotPassword.name }"
+        class="text-sm text-blue-500 hover:underline"
+      >
         Click here if you forgot your password!
       </RouterLink>
     </div>
