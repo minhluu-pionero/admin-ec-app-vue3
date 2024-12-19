@@ -1,1 +1,0 @@
-import{_ as s}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{c as t,a as n,o}from"./index-BjP7hzwy.js";const r={},a={class:"about lg:min-h-dvh lg:flex lg:items-center"};function c(i,e){return o(),t("div",a,e[0]||(e[0]=[n("h1",null,"This is an settings page",-1)]))}const d=s(r,[["render",c]]);export{d as default};
