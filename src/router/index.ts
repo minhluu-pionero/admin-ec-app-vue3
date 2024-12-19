@@ -11,8 +11,6 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const authStore = useAuthStore()
 
-  authStore.autoExtendToken()
-
   const middleware = Array.isArray(to.meta.middleware) ? to.meta.middleware : []
 
   if (middleware.length === 0) {

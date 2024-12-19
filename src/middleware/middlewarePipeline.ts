@@ -1,48 +1,53 @@
-import type { NavigationGuardNext, RouteLocationNormalized, RouteLocationRaw, NavigationGuardNextCallback } from 'vue-router';
+import type {
+  NavigationGuardNext,
+  RouteLocationNormalized,
+  RouteLocationRaw,
+  NavigationGuardNextCallback,
+} from 'vue-router'
 
-interface Context {
-  to: RouteLocationNormalized;
-  from: RouteLocationNormalized;
-  next: NavigationGuardNext;
+interface IContext {
+  to: RouteLocationNormalized
+  from: RouteLocationNormalized
+  next: NavigationGuardNext
 }
 
-type Middleware = (context: Context & { next: NavigationGuardNext }) => Promise<void> | void;
+type MiddlewareType = (context: IContext) => Promise<void> | void
+
+type NextParamType = RouteLocationRaw | boolean | undefined | NavigationGuardNextCallback
 
 export default async function middlewarePipeline(
-  context: Context,
-  middleware: Middleware[],
-  index: number
+  context: IContext,
+  middleware: MiddlewareType[],
+  index: number,
 ): Promise<void> {
-  const nextMiddleware = middleware[index];
+  const nextMiddleware = middleware[index]
 
   if (!nextMiddleware) {
-    return context.next();
+    return context.next()
   }
 
   const proceedNext = () => {
-    return middlewarePipeline(context, middleware, index + 1);
-  };
+    return middlewarePipeline(context, middleware, index + 1)
+  }
 
-  type NextParam = RouteLocationRaw | boolean | undefined | NavigationGuardNextCallback;
-
-  const nextWrapper: NavigationGuardNext = (param?: NextParam) => {
+  const nextWrapper: NavigationGuardNext = (param?: NextParamType) => {
     if (param instanceof Error) {
-      return context.next(param);
+      return context.next(param)
     }
 
     if (typeof param === 'boolean' || param === undefined) {
-      return context.next(param);
+      return context.next(param)
     }
 
     if (param) {
-      return context.next(param as RouteLocationRaw);
+      return context.next(param as RouteLocationRaw)
     }
 
-    proceedNext();
-  };
+    proceedNext()
+  }
 
   return nextMiddleware({
     ...context,
     next: nextWrapper,
-  });
+  })
 }
